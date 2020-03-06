@@ -47,7 +47,7 @@
     <Compile Include="IStateMachine.cs" />
     <Compile Include="IStateMachineBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateMachinePushedEventArgs.cs" />
+    <Compile Include="Events\StateMachinePushedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
