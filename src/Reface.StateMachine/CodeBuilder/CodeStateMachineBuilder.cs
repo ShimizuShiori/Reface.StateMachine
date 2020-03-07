@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Reface.StateMachine.CodeBuilder
 {
@@ -16,11 +12,6 @@ namespace Reface.StateMachine.CodeBuilder
         {
             this.stateMoveInfos.Add(new StateMoveInfo<TState, TAction>(from, action, to));
             return this;
-        }
-
-        public FromStep<TState, TAction> From(TState state)
-        {
-            return new FromStep<TState, TAction>(this, state);
         }
 
         public CodeStateMachineBuilder<TState, TAction> StartWith(TState state)
