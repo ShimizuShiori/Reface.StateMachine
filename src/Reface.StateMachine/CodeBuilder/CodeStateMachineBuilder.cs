@@ -18,6 +18,11 @@ namespace Reface.StateMachine.CodeBuilder
             return this;
         }
 
+        public FromStep<TState, TAction> From(TState state)
+        {
+            return new FromStep<TState, TAction>(this, state);
+        }
+
         public CodeStateMachineBuilder<TState, TAction> StartWith(TState state)
         {
             this.startState = state;

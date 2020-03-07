@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="CodeBuilder\CodeStateMachine.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilder.cs" />
+    <Compile Include="CodeBuilder\FromStep.cs" />
+    <Compile Include="CodeBuilder\ToStep.cs" />
     <Compile Include="CodeBuilder\StateMoveInfo.cs" />
     <Compile Include="IStateMachine.cs" />
     <Compile Include="IStateMachineBuilder.cs" />
