@@ -8,5 +8,6 @@ namespace Reface.StateMachine
         event EventHandler<StateMachinePushedEventArgs<TState, TAction>> Pushed;
         IStateListener<TState, TAction> GetStateListener(TState state);
         void Push(TAction action);
+        bool TryPush(TAction action);
     }
 }

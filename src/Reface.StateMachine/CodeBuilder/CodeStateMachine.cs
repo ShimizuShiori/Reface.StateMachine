@@ -52,5 +52,18 @@ namespace Reface.StateMachine.CodeBuilder
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnEntered(this, new StateEnteredEventArgs<TState, TAction>(action, nextInfo.From));
             this.Pushed?.Invoke(this, new StateMachinePushedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
         }
+
+        public bool TryPush(TAction action)
+        {
+            try
+            {
+                this.Push(action);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
