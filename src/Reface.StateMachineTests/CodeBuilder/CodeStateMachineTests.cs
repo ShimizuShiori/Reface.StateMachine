@@ -15,9 +15,9 @@ namespace Reface.StateMachine.CodeBuilder.Tests
                 .Move(TestStates.Default, TestActions.Save, TestStates.Draft)
                 .Move(TestStates.Draft, TestActions.Check, TestStates.Checked)
                 .Move(TestStates.Draft, TestActions.Delete, TestStates.Deleted)
-                .Move(TestStates.Checked, TestActions.Check, TestStates.DoubleChcked)
+                .Move(TestStates.Checked, TestActions.Check, TestStates.DoubleChecked)
                 .Move(TestStates.Checked, TestActions.Recall, TestStates.Recalled)
-                .Move(TestStates.DoubleChcked, TestActions.Recall, TestStates.Recalled)
+                .Move(TestStates.DoubleChecked, TestActions.Recall, TestStates.Recalled)
                 ;
             var machine = builder.Build();
             Assert.IsFalse(machine.TryPush(TestActions.Check));

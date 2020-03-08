@@ -23,7 +23,7 @@ namespace Reface.StateMachineTests
                     .When(TestActions.Check).To(TestStates.Checked)
                     .When(TestActions.Delete).To(TestStates.Deleted)
                 .From(TestStates.Checked)
-                    .When(TestActions.Check).To(TestStates.DoubleChcked)
+                    .When(TestActions.Check).To(TestStates.DoubleChecked)
                     .When(TestActions.Recall).To(TestStates.Recalled);
             var machine = builder.Build();
             int i = 0;

@@ -15,9 +15,9 @@ namespace Reface.StateMachine.CodeBuilder.Tests
                 .Move(TestStates.Default, TestActions.Save, TestStates.Draft)
                 .Move(TestStates.Draft, TestActions.Check, TestStates.Checked)
                 .Move(TestStates.Draft, TestActions.Delete, TestStates.Deleted)
-                .Move(TestStates.Checked, TestActions.Check, TestStates.DoubleChcked)
+                .Move(TestStates.Checked, TestActions.Check, TestStates.DoubleChecked)
                 .Move(TestStates.Checked, TestActions.Recall, TestStates.Recalled)
-                .Move(TestStates.DoubleChcked, TestActions.Recall, TestStates.Recalled)
+                .Move(TestStates.DoubleChecked, TestActions.Recall, TestStates.Recalled)
                 ;
             var machine = builder.Build();
             TestStates ts = TestStates.Default;
@@ -30,7 +30,7 @@ namespace Reface.StateMachine.CodeBuilder.Tests
             machine.Push(TestActions.Check);
             Assert.AreEqual(TestStates.Checked, ts);
             machine.Push(TestActions.Check);
-            Assert.AreEqual(TestStates.DoubleChcked, ts);
+            Assert.AreEqual(TestStates.DoubleChecked, ts);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace Reface.StateMachine.CodeBuilder.Tests
                     .When(TestActions.Check).To(TestStates.Checked)
                     .When(TestActions.Delete).To(TestStates.Deleted)
                 .From(TestStates.Checked)
-                    .When(TestActions.Check).To(TestStates.DoubleChcked)
+                    .When(TestActions.Check).To(TestStates.DoubleChecked)
                     .When(TestActions.Recall).To(TestStates.Recalled);
             var machine = builder.Build();
             TestStates ts = TestStates.Default;
@@ -57,7 +57,7 @@ namespace Reface.StateMachine.CodeBuilder.Tests
             machine.Push(TestActions.Check);
             Assert.AreEqual(TestStates.Checked, ts);
             machine.Push(TestActions.Check);
-            Assert.AreEqual(TestStates.DoubleChcked, ts);
+            Assert.AreEqual(TestStates.DoubleChecked, ts);
         }
     }
 }

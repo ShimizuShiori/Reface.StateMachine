@@ -15,8 +15,13 @@ namespace Reface.StateMachine.CsvBuilder
 
         public static IStateMachineBuilder<TState, TAction> FromFile(string path)
         {
-            string text = File.ReadAllText(path);
-            return new CsvStateMachineBuilder<TState, TAction>(text);
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read ))
+            {
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+                string text = System.Text.Encoding.Default.GetString(buffer);
+                return new CsvStateMachineBuilder<TState, TAction>(text);
+            }
         }
 
         public IStateMachine<TState, TAction> Build()
@@ -26,6 +31,7 @@ namespace Reface.StateMachine.CsvBuilder
             for (int i = 1; i < rows.Length; i++)
             {
                 string[] cells = rows[i].Replace("\r", "").Split(new char[] { ',' });
+                if (cells.Length == 1) continue;
                 string currentState = cells[0];
                 TState fromState = (TState)Enum.Parse(typeof(TState), currentState);
                 for (int j = 1; j < cells.Length; j++)

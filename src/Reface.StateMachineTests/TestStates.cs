@@ -11,7 +11,7 @@ namespace Reface.StateMachineTests
         Default,
         Draft,
         Checked,
-        DoubleChcked,
+        DoubleChecked,
         Deleted,
         Recalled
     }

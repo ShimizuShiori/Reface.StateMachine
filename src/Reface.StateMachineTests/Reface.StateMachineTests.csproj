@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="CodeBuilder\CodeStateMachineBuilderTests.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineTests.cs" />
-    <Compile Include="DemoTests.cs" />
+    <Compile Include="CsvBuilder\CsvStateMachineBuilderTests.cs" />
     <Compile Include="ListenerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestActions.cs" />
