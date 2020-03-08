@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Reface.StateMachine.CodeBuilder;
 using Reface.StateMachineTests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reface.StateMachine.CodeBuilder.Tests
 {
