@@ -1,4 +1,6 @@
-﻿using Reface.StateMachine.CodeBuilder;
+﻿using Reface.StateMachine.Attributes;
+using Reface.StateMachine.CodeBuilder;
+using Reface.StateMachine.Helpers;
 using System;
 using System.IO;
 
@@ -13,9 +15,17 @@ namespace Reface.StateMachine.CsvBuilder
             this.text = text;
         }
 
+        private TState GetDefaultState()
+        {
+            var fields = EnumHelper.GetItemsByAttribute<TState, StartStateAttribute>();
+            if (fields.Count != 1) return default(TState);
+            return (TState)Enum.Parse(typeof(TState), fields[0].Name);
+
+        }
+
         public static IStateMachineBuilder<TState, TAction> FromFile(string path)
         {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read ))
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
@@ -44,6 +54,7 @@ namespace Reface.StateMachine.CsvBuilder
                     this.codeStateMachineBuilder.Move(fromState, action, toState);
                 }
             }
+            this.codeStateMachineBuilder.StartWith(this.GetDefaultState());
             return this.codeStateMachineBuilder.Build();
         }
     }

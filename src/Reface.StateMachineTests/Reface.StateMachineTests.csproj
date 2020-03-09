@@ -58,6 +58,7 @@
     <Compile Include="CodeBuilder\CodeStateMachineBuilderTests.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineTests.cs" />
     <Compile Include="CsvBuilder\CsvStateMachineBuilderTests.cs" />
+    <Compile Include="Helpers\EnumHelperTests.cs" />
     <Compile Include="ListenerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestActions.cs" />

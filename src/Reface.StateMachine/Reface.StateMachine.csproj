@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\StartStateAttribute.cs" />
     <Compile Include="CodeBuilder\CodeStateMachine.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilder.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilderExt.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Events\IStateListener.cs" />
     <Compile Include="Events\StateEnteredEventArgs.cs" />
     <Compile Include="Events\StateLeavingEventArgs.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="IStateMachine.cs" />
     <Compile Include="IStateMachineBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

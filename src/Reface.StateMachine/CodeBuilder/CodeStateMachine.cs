@@ -37,20 +37,28 @@ namespace Reface.StateMachine.CodeBuilder
 
         public void Push(TAction action)
         {
+            Console.WriteLine($"Push : [{this.currentState.ToString()}]--[{action.ToString()}]-->");
             var nextMoveInfos = this.stateMoveInfos.Where(x => x.From.Equals(this.currentState) && x.Action.Equals(action));
             if (!nextMoveInfos.Any())
             {
-                throw new ApplicationException("没有可用的状态转移");
+                Console.WriteLine("不存在的转移");
+                throw new ApplicationException("不存在的转移");
             }
             if (nextMoveInfos.Count() > 1)
             {
+                Console.WriteLine("有多个可用的状态转移");
                 throw new ApplicationException("有多个可用的状态转移");
             }
             var nextInfo = nextMoveInfos.First();
+            Console.WriteLine($"Find target state :[{nextInfo.To.ToString()}]");
+            Console.WriteLine("Triggering event : OnLeaving");
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnLeaving(this, new StateLeavingEventArgs<TState, TAction>(action, nextInfo.To));
             this.currentState = nextInfo.To;
+            Console.WriteLine("Triggering event : OnEntered");
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnEntered(this, new StateEnteredEventArgs<TState, TAction>(action, nextInfo.From));
+            Console.WriteLine("Triggering event : Pushed");
             this.Pushed?.Invoke(this, new StateMachinePushedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
+            
         }
 
         public bool TryPush(TAction action)

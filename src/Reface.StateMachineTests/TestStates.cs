@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Reface.StateMachine.Attributes;
 
 namespace Reface.StateMachineTests
 {
     public enum TestStates
     {
+        [StartState]
         Default,
         Draft,
         Checked,

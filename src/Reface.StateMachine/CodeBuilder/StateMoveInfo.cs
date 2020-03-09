@@ -18,5 +18,10 @@ namespace Reface.StateMachine.CodeBuilder
             Action = action;
             To = to;
         }
+
+        public override string ToString()
+        {
+            return $"[{this.From.ToString()}]--[{this.Action.ToString()}]-->[{this.To.ToString()}]";
+        }
     }
 }
