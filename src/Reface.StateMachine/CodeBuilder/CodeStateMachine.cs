@@ -1,7 +1,6 @@
 ﻿using Reface.StateMachine.Events;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Reface.StateMachine.CodeBuilder
 {
