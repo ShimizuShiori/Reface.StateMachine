@@ -45,7 +45,9 @@
     <Compile Include="CodeBuilder\CodeStateMachine.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilder.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilderExt.cs" />
+    <Compile Include="CodeBuilder\DefaultStateMoveInfoSearcher.cs" />
     <Compile Include="CodeBuilder\FromStep.cs" />
+    <Compile Include="CodeBuilder\IStateMoveInfoSearcher.cs" />
     <Compile Include="CodeBuilder\ToStep.cs" />
     <Compile Include="CodeBuilder\StateMoveInfo.cs" />
     <Compile Include="CsvBuilder\CsvStateMachineBuilder.cs" />

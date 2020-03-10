@@ -22,7 +22,7 @@ namespace Reface.StateMachine.CodeBuilder
 
         public IStateMachine<TState, TAction> Build()
         {
-            return new CodeStateMachine<TState, TAction>(this.stateMoveInfos, this.startState);
+            return new CodeStateMachine<TState, TAction>(new DefaultStateMoveInfoSearcher<TState, TAction>(this.stateMoveInfos), this.startState);
         }
     }
 }
