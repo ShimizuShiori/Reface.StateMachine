@@ -51,6 +51,7 @@
     <Compile Include="CodeBuilder\ToStep.cs" />
     <Compile Include="CodeBuilder\StateMoveInfo.cs" />
     <Compile Include="CsvBuilder\CsvStateMachineBuilder.cs" />
+    <Compile Include="DebugLogger.cs" />
     <Compile Include="Events\DefaultStateListener.cs" />
     <Compile Include="Events\IStateListener.cs" />
     <Compile Include="Events\StateEnteredEventArgs.cs" />
