@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reface.StateMachine.Errors;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -10,7 +11,7 @@ namespace Reface.StateMachine.Helpers
         {
             Type type = typeof(T);
             if (!type.IsEnum)
-                throw new NotSupportedException("不支持从非枚举类型中获取项");
+                throw CanNotGetEnumItemException.CreateNotEnumType();
 
             string[] names = Enum.GetNames(type);
             FieldInfo[] result = new FieldInfo[names.Length];

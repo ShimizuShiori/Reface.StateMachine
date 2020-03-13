@@ -37,13 +37,13 @@ namespace Reface.StateMachine.CodeBuilder
         public void Push(TAction action)
         {
             var nextInfo = this.stateMoveInfoSearcher.Search(this.currentState, action);
-            DebugLogger.Log($"Find target state :[{nextInfo.To.ToString()}]");
-            DebugLogger.Log("Triggering event : OnLeaving");
+            DebugLogger.Debug($"Find target state :[{nextInfo.To.ToString()}]");
+            DebugLogger.Debug("Triggering event : OnLeaving");
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnLeaving(this, new StateLeavingEventArgs<TState, TAction>(action, nextInfo.To));
             this.currentState = nextInfo.To;
-            DebugLogger.Log("Triggering event : OnEntered");
+            DebugLogger.Debug("Triggering event : OnEntered");
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnEntered(this, new StateEnteredEventArgs<TState, TAction>(action, nextInfo.From));
-            DebugLogger.Log("Triggering event : Pushed");
+            DebugLogger.Debug("Triggering event : Pushed");
             this.Pushed?.Invoke(this, new StateMachinePushedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
 
         }

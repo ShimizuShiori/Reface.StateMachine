@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reface.StateMachine.Errors;
+using System;
 using System.Collections.Generic;
 
 namespace Reface.StateMachine.CodeBuilder
@@ -27,12 +28,14 @@ namespace Reface.StateMachine.CodeBuilder
             Dictionary<TAction, StateMoveInfo<TState, TAction>> actionMap;
             if (!this.moveInfoDictionary.TryGetValue(from, out actionMap))
             {
-                throw new ApplicationException($"no moves from [{from.ToString()}]");
+                DebugLogger.Error($"未能找任何可以从 {from.ToString()} 发起的状态变更");
+                throw SearchMoveInfoException.CreateByNoMoveInfo();
             }
             StateMoveInfo<TState, TAction> info;
             if (!actionMap.TryGetValue(when, out info))
             {
-                throw new ApplicationException($"no moves [{from.ToString()}]--[{when.ToString()}]-->");
+                DebugLogger.Error($"没有定义 [{from.ToString()}]--[{when.ToString()}]--> 的状态转移");
+                throw SearchMoveInfoException.CreateByNoMoveInfo();
             }
             return info;
 

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="Reface">
+      <HintPath>..\..\libs\Reface.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,7 +55,8 @@
     <Compile Include="CodeBuilder\ToStep.cs" />
     <Compile Include="CodeBuilder\StateMoveInfo.cs" />
     <Compile Include="CsvBuilder\CsvStateMachineBuilder.cs" />
-    <Compile Include="DebugLogger.cs" />
+    <Compile Include="Errors\CanNotGetEnumItemException.cs" />
+    <Compile Include="Errors\SearchMoveInfoException.cs" />
     <Compile Include="Events\DefaultStateListener.cs" />
     <Compile Include="Events\IStateListener.cs" />
     <Compile Include="Events\StateEnteredEventArgs.cs" />
