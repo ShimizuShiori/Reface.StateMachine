@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Reface.StateMachine</id>
+    <version>1.0.0</version>
+    <title>Reface.StateMachine</title>
+    <authors>ShimizuShiori</authors>
+    <owners>ShimizuShiori</owners>
+    <license type="expression">MIT</license>
+    <description>状态下推机</description>
+    <copyright>Copyright 2020</copyright>
+    <dependencies>
+      <dependency id="Reface" version="1.0.0"></dependency>
+    </dependencies>
+  </metadata>
+</package>
