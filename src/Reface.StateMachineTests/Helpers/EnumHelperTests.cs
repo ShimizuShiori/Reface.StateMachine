@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reface.StateMachineTests;
 using System.Reflection;
 using Reface.StateMachine.Attributes;
+using Reface;
 
 namespace Reface.StateMachine.Helpers.Tests
 {

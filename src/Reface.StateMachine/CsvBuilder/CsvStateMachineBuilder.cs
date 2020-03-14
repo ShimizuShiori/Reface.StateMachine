@@ -1,6 +1,5 @@
 ﻿using Reface.StateMachine.Attributes;
 using Reface.StateMachine.CodeBuilder;
-using Reface.StateMachine.Helpers;
 using System;
 using System.IO;
 
