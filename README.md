@@ -94,6 +94,7 @@ machine.Push(DocumentActions.Check);
 事件的监听有两种方法：
 
 **Pushed 事件**
+
 当任意 **Action** 完成了对状态的转移后，就会触发该事件，该事件会通知此时的 Push 是执行的哪个行为，从哪个状态移动到了哪个状态。
 ```csharp
 machine.Pushed += (sender, e) => 
@@ -107,6 +108,7 @@ machine.Pushed += (sender, e) =>
 ```
 
 **状态 事件**
+
 Pushed 事件面向所有的状态移动，
 因此我们设计了 状态 事件和监听，可以针对某个状态监听其离开和进入。
 ```csharp
