@@ -9,14 +9,17 @@ namespace Reface.StateMachine.CodeBuilder
         private readonly IStateMoveInfoSearcher<TState, TAction> stateMoveInfoSearcher;
         private TState currentState;
         private readonly Dictionary<TState, DefaultStateListener<TState, TAction>> listeners = new Dictionary<TState, DefaultStateListener<TState, TAction>>();
+        private readonly HashSet<TState> stopStates;
 
-        public CodeStateMachine(IStateMoveInfoSearcher<TState, TAction> stateMoveInfoSearcher, TState startState)
+        public CodeStateMachine(IStateMoveInfoSearcher<TState, TAction> stateMoveInfoSearcher, TState startState, HashSet<TState> stopState)
         {
             this.stateMoveInfoSearcher = stateMoveInfoSearcher;
             this.currentState = startState;
+            this.stopStates = stopState;
         }
 
         public event EventHandler<StateMachinePushedEventArgs<TState, TAction>> Pushed;
+        public event EventHandler<StateMachineStopedEventArgs<TState, TAction>> Stoped;
 
         public IStateListener<TState, TAction> GetStateListener(TState state)
         {
@@ -37,15 +40,14 @@ namespace Reface.StateMachine.CodeBuilder
         public void Push(TAction action)
         {
             var nextInfo = this.stateMoveInfoSearcher.Search(this.currentState, action);
-            DebugLogger.Debug($"Find target state :[{nextInfo.To.ToString()}]");
-            DebugLogger.Debug("Triggering event : OnLeaving");
+
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnLeaving(this, new StateLeavingEventArgs<TState, TAction>(action, nextInfo.To));
             this.currentState = nextInfo.To;
-            DebugLogger.Debug("Triggering event : OnEntered");
             this.GetStateListenerAsDefaultStateListener(this.currentState).OnEntered(this, new StateEnteredEventArgs<TState, TAction>(action, nextInfo.From));
-            DebugLogger.Debug("Triggering event : Pushed");
-            this.Pushed?.Invoke(this, new StateMachinePushedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
 
+            this.Pushed?.Invoke(this, new StateMachinePushedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
+            if (this.stopStates.Contains(this.currentState))
+                this.Stoped?.Invoke(this, new StateMachineStopedEventArgs<TState, TAction>(nextInfo.From, action, this.currentState));
         }
 
         public bool TryPush(TAction action)

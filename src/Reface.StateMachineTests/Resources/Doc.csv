@@ -1,0 +1,7 @@
+,Save,Check,Delete,Recall
+Default,Draft,,,
+Draft,Deleted,Checked,Deleted,
+Checked,,DoubleChecked,,Recalled
+DoubleChecked,,,,
+Deleted,,,,
+Recalled,,,,

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\StartStateAttribute.cs" />
+    <Compile Include="Attributes\StopStateAttribute.cs" />
     <Compile Include="CodeBuilder\CodeStateMachine.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilder.cs" />
     <Compile Include="CodeBuilder\CodeStateMachineBuilderExt.cs" />
@@ -55,11 +56,13 @@
     <Compile Include="CodeBuilder\ToStep.cs" />
     <Compile Include="CodeBuilder\StateMoveInfo.cs" />
     <Compile Include="CsvBuilder\CsvStateMachineBuilder.cs" />
+    <Compile Include="Errors\CodeStateMachineBuilderBuildException.cs" />
     <Compile Include="Errors\SearchMoveInfoException.cs" />
     <Compile Include="Events\DefaultStateListener.cs" />
     <Compile Include="Events\IStateListener.cs" />
     <Compile Include="Events\StateEnteredEventArgs.cs" />
     <Compile Include="Events\StateLeavingEventArgs.cs" />
+    <Compile Include="Events\StateMachineStopdEventArgs.cs" />
     <Compile Include="IStateMachine.cs" />
     <Compile Include="IStateMachineBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

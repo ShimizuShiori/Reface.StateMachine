@@ -8,8 +8,11 @@ namespace Reface.StateMachineTests
         Default,
         Draft,
         Checked,
+        [StopState]
         DoubleChecked,
+        [StopState]
         Deleted,
+        [StopState]
         Recalled
     }
 }

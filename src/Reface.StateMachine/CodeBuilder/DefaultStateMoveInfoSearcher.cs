@@ -1,5 +1,4 @@
 ﻿using Reface.StateMachine.Errors;
-using System;
 using System.Collections.Generic;
 
 namespace Reface.StateMachine.CodeBuilder
@@ -12,6 +11,7 @@ namespace Reface.StateMachine.CodeBuilder
         public DefaultStateMoveInfoSearcher(IEnumerable<StateMoveInfo<TState, TAction>> infos)
         {
             Dictionary<TAction, StateMoveInfo<TState, TAction>> actionMap;
+            StateMoveInfo<TState, TAction> moveInfo;
             foreach (var info in infos)
             {
                 if (!moveInfoDictionary.TryGetValue(info.From, out actionMap))
@@ -19,7 +19,15 @@ namespace Reface.StateMachine.CodeBuilder
                     actionMap = new Dictionary<TAction, StateMoveInfo<TState, TAction>>();
                     moveInfoDictionary[info.From] = actionMap;
                 }
-                actionMap[info.Action] = info;
+
+                if (!actionMap.TryGetValue(info.Action, out moveInfo))
+                {
+                    actionMap[info.Action] = info;
+                    continue;
+                }
+
+                if (!moveInfo.To.Equals(info.To))
+                    throw new CodeStateMachineBuilderBuildException($"[{info.From.ToString()}]--[{info.Action.ToString()}]-->[{info.To.ToString()} , {moveInfo.To.ToString()}] 存在两个目标，无法构建状态机");
             }
         }
 

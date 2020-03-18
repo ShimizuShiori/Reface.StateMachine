@@ -6,6 +6,8 @@ using System.IO;
 namespace Reface.StateMachine.CsvBuilder
 {
     public class CsvStateMachineBuilder<TState, TAction> : IStateMachineBuilder<TState, TAction>
+        where TState : struct
+        where TAction : struct
     {
         private readonly CodeStateMachineBuilder<TState, TAction> codeStateMachineBuilder = new CodeStateMachineBuilder<TState, TAction>();
         private readonly string text;
@@ -14,13 +16,6 @@ namespace Reface.StateMachine.CsvBuilder
             this.text = text;
         }
 
-        private TState GetDefaultState()
-        {
-            var fields = EnumHelper.GetItemsByAttribute<TState, StartStateAttribute>();
-            if (fields.Count != 1) return default(TState);
-            return (TState)Enum.Parse(typeof(TState), fields[0].Name);
-
-        }
 
         public static IStateMachineBuilder<TState, TAction> FromFile(string path)
         {
@@ -53,7 +48,6 @@ namespace Reface.StateMachine.CsvBuilder
                     this.codeStateMachineBuilder.Move(fromState, action, toState);
                 }
             }
-            this.codeStateMachineBuilder.StartWith(this.GetDefaultState());
             return this.codeStateMachineBuilder.Build();
         }
     }

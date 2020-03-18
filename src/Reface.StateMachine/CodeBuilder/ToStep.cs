@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reface.StateMachine.CodeBuilder
+﻿namespace Reface.StateMachine.CodeBuilder
 {
     public class ToStep<TState, TAction>
+            where TState : struct
+            where TAction : struct
     {
         private readonly CodeStateMachineBuilder<TState, TAction> codeStateMachineBuilder;
         private readonly TState from;
