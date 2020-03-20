@@ -8,7 +8,7 @@
     <owners>ShimizuShiori</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <projectUrl>https://github.com/ShimizuShiori/Reface.StateMachine</projectUrl>
     <description>自动下推状态机</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2020</copyright>
