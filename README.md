@@ -185,3 +185,8 @@ public enum DocumentTest
     Deleted
 }
 ```
+
+---
+
+相关链接
+* [nuget 下载页](https://www.nuget.org/packages/Reface.StateMachine)
