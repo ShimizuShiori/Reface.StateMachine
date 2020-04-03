@@ -37,22 +37,10 @@ namespace Reface.StateMachineTests.CsvBuilder
             Assert.AreEqual(TestStates.DoubleChecked, ts);
         }
 
+        [TestMethod]
+        public void BuildFromStream()
+        {
 
-        //[TestMethod]
-        //public void PushAndCheckIsStopedByEventOfStoped()
-        //{
-        //    var builder = CsvStateMachineBuilder<TestStates, TestActions>.FromFile("./Resources/Doc.csv");
-        //    var machine = builder.Build();
-        //    bool isStoped = false;
-        //    machine.Stoped += (sender, e) =>
-        //      {
-        //          isStoped = true;
-        //      };
-        //    machine.Push(TestActions.Save);
-        //    machine.Push(TestActions.Check);
-        //    machine.Push(TestActions.Check);
-
-        //    Assert.IsTrue(isStoped);
-        //}
+        }
     }
 }

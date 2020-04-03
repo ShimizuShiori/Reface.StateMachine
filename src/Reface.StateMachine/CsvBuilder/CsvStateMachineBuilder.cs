@@ -21,11 +21,16 @@ namespace Reface.StateMachine.CsvBuilder
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
-                string text = System.Text.Encoding.Default.GetString(buffer);
-                return new CsvStateMachineBuilder<TState, TAction>(text);
+                return FromStream(stream);
             }
+        }
+
+        public static IStateMachineBuilder<TState, TAction> FromStream(Stream stream)
+        {
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, buffer.Length);
+            string text = System.Text.Encoding.Default.GetString(buffer);
+            return new CsvStateMachineBuilder<TState, TAction>(text);
         }
 
         public IStateMachine<TState, TAction> Build()
